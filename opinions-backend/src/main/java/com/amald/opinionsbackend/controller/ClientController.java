@@ -5,6 +5,8 @@ import com.amald.opinionsbackend.services.ClientService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path = "client")
 public class ClientController {
@@ -18,5 +20,10 @@ public class ClientController {
     @PostMapping(consumes = "application/json")
     public void create(@RequestBody Client client) {
         this.clientService.create(client);
+    }
+
+    @GetMapping(produces = "application/json")
+    public List<Client> clientSearch() {
+       return this.clientService.search();
     }
 }
